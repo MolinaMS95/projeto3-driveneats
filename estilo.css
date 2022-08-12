@@ -15,6 +15,7 @@ body{
     position: fixed;
     top: 0px;
     left: 0px;
+    z-index: 2;
 }
 h1{
     font-family: 'Righteous';
@@ -57,6 +58,7 @@ h2{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
 }
 .item img{
     width: 144px;
@@ -81,6 +83,15 @@ h2{
     font-size: 16px;
     color: #000000;
 }
+ion-icon{
+    color: #32B72F;
+    position: absolute;
+    bottom: 18px;
+    right: 14px;
+}
+.escondido{
+    display: none;
+}
 .barraInferior{
     background-color: #FFFFFF;
     width: 100%;
@@ -104,4 +115,7 @@ h2{
     font-weight: 400px;
     font-size: 20px;
     color: #FFFFFF;
+}
+.selecionado{
+    box-shadow: inset 0px 0px 0px 5px #32B72F;
 }
