@@ -22,13 +22,6 @@ function selecionar(item){
     }
 }
 
-function montarPedido(){
-    const texto = encodeURIComponent(`Olá, gostaria de fazer o pedido:\n- Prato: ${prato.innerHTML}\n- Bebida: ${bebida.innerHTML}\n- Sobremesa: ${sobremesa.innerHTML}\nTotal: R$ ${preco.toFixed(2)}`)
-    const wpp = `https://wa.me/5512982059363?text=${texto}`;
-    const link = document.querySelector('.barraInferior a');
-    link.setAttribute('href', wpp)
-}
-
 function fecharPedido(){
     const prato = document.querySelector('.pratos .selecionado h4').innerHTML;
     const bebida = document.querySelector('.bebidas .selecionado h4').innerHTML;
@@ -45,5 +38,17 @@ function fecharPedido(){
     document.querySelector('.sobremesa .nome').innerHTML = sobremesa;
     document.querySelector('.sobremesa .preco').innerHTML = precoSobremesa;
     document.querySelector('.total .preco').innerHTML = preco.toFixed(2).replaceAll('.',',');
+    const texto = `Olá, gostaria de fazer o pedido:\n- Prato: ${prato}\n- Bebida: ${bebida}\n- Sobremesa: ${sobremesa}\nTotal: R$ ${preco.toFixed(2)}`;
+    return texto;
+}
+function voltar(){
+    document.querySelector('.caixaConfirmacao').classList.remove('display');
 }
 
+function enviar(){
+    const nome = 'Nome: ' +prompt('Seu nome:');
+    const endereco = 'Endereço: ' +prompt('Seu endereço');
+    const pedido = fecharPedido();
+    const mensagem = encodeURIComponent(`${pedido}\n\n${nome}\n${endereco}`);
+    open(`https://wa.me/5512982059363?text=${mensagem}`);
+}
